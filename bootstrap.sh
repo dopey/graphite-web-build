@@ -1,6 +1,6 @@
 # Run this in a path you don't care about, things may get deleted!
 VERSION="0.9.12"
-BUILD="betable1"
+BUILD="betable2"
 
 set -e -x
 ORIGPWD="$(pwd)"
@@ -11,6 +11,10 @@ trap "rm -rf \"$TMP\"" EXIT INT QUIT TERM
 git clone --depth 1 git@github.com:graphite-project/graphite-web.git
 cd graphite-web
 git checkout "tags/$VERSION"
+
+# Apply patches
+patch -p1 < "$DIRNAME/patches/graphite-syslogger.patch"
+
 # Stupid hack for new django
 sed -i.bak "s/from django\.conf\.urls\.defaults import \*/from django.conf.urls import patterns, url, include/g" webapp/graphite/urls.py
 sed -i.bak "s/from django\.conf\.urls\.defaults import \*/from django.conf.urls import patterns, url, include/g" webapp/graphite/render/urls.py
