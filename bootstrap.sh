@@ -13,7 +13,7 @@ cd graphite-web
 git checkout "tags/$VERSION"
 
 # Apply patches
-patch -p1 < "$DIRNAME/patches/graphite-syslogger.patch"
+patch -p1 < "$ORIGPWD/patches/graphite-syslogger.patch"
 
 # Stupid hack for new django
 sed -i.bak "s/from django\.conf\.urls\.defaults import \*/from django.conf.urls import patterns, url, include/g" webapp/graphite/urls.py
