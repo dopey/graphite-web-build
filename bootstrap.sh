@@ -1,6 +1,6 @@
 # Run this in a path you don't care about, things may get deleted!
 VERSION="0.9.12"
-BUILD="betable2"
+BUILD="betable3"
 
 set -e -x
 ORIGPWD="$(pwd)"
@@ -14,6 +14,7 @@ git checkout "tags/$VERSION"
 
 # Apply patches
 patch -p1 < "$ORIGPWD/patches/graphite-syslogger.patch"
+patch -p1 < "$ORIGPWD/patches/safe-unpickle.patch"
 
 # Stupid hack for new django
 sed -i.bak "s/from django\.conf\.urls\.defaults import \*/from django.conf.urls import patterns, url, include/g" webapp/graphite/urls.py
