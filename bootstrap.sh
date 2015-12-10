@@ -1,6 +1,6 @@
 # Run this in a path you don't care about, things may get deleted!
-VERSION="0.9.14"
-BUILD="betable2"
+VERSION="0.9.15"
+BUILD="betable1"
 
 set -e -x
 ORIGPWD="$(pwd)"
@@ -33,7 +33,7 @@ cd prepare
 
 rm -f "$ORIGPWD/graphite-web_${VERSION}-${BUILD}_amd64.deb"
 
-fakeroot fpm -m "Nate Brown <nate@betable.com>" \
+fakeroot fpm -m "John Claus <jclaus@betable.com>" \
              -n "graphite-web" -v "$VERSION-$BUILD" \
              -p "$ORIGPWD/graphite-web_${VERSION}-${BUILD}_amd64.deb" \
              -d "whisper = $VERSION" -d "carbon = $VERSION" \
