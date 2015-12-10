@@ -1,5 +1,5 @@
 # Run this in a path you don't care about, things may get deleted!
-VERSION="0.9.13"
+VERSION="0.9.14"
 BUILD="betable2"
 
 set -e -x
@@ -10,7 +10,7 @@ trap "rm -rf \"$TMP\"" EXIT INT QUIT TERM
 
 git clone git@github.com:graphite-project/graphite-web.git
 cd graphite-web
-git checkout -B "$VERSION" "aa37f1bd3f3d2478b3d84ff20bd309db3ec30a02"
+git checkout -B "$VERSION" "$VERSION"
 
 # Stupid hack for new django
 sed -i.bak "s/from django\.conf\.urls\.defaults import \*/from django.conf.urls import patterns, url, include/g" webapp/graphite/urls.py
