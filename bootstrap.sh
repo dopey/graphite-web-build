@@ -33,7 +33,7 @@ cd prepare
 
 rm -f "$ORIGPWD/graphite-web_${VERSION}-${BUILD}_amd64.deb"
 
-fakeroot fpm -m "Nate Brown <nate@betable.com>" \
+fakeroot fpm -m "John Claus <jclaus@betable.com>" \
              -n "graphite-web" -v "$VERSION-$BUILD" \
              -p "$ORIGPWD/graphite-web_${VERSION}-${BUILD}_amd64.deb" \
              -d "whisper = $VERSION-$BUILD" -d "carbon = $VERSION-$BUILD" \
